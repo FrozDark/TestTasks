@@ -1,0 +1,44 @@
+﻿<Application
+    x:Class="TestTasks.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:TestTasks.Converters"
+    xmlns:dialogs="clr-namespace:TestTasks.DialogViews"
+    xmlns:local="clr-namespace:TestTasks"
+    xmlns:viewsd="clr-namespace:TestTasks.DialogViews"
+    xmlns:vm="clr-namespace:TestViewModels;assembly=TestViewModels"
+    xmlns:vmd="clr-namespace:TestViewModels.Dialogs;assembly=TestViewModels"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <converters:IsNotNullZeroOrEmptyConverter x:Key="IsNotNullZeroOrEmptyConverter" />
+        <converters:GroupByTypeConverter x:Key="GroupByTypeConverter" />
+        <converters:GroupNameConverter x:Key="GroupNameConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <Style TargetType="{x:Type dialogs:DialogBase}">
+            <Setter Property="Focusable" Value="True" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="MinWidth" Value="200" />
+            <Setter Property="MaxWidth" Value="400" />
+            <Setter Property="MaxHeight" Value="600" />
+        </Style>
+
+        <DataTemplate DataType="{x:Type vm:DevicesViewModel}">
+            <local:DevicesPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vmd:AddDeviceDialogViewModel}">
+            <viewsd:AddDeviceDialog />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vmd:ConfirmDialogViewModel}">
+            <viewsd:ConfirmDialog />
+        </DataTemplate>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </Application.Resources>
+</Application>

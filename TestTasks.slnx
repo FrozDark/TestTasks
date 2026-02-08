@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TestModels/TestModels.csproj" />
+  <Project Path="TestTasks/TestTasks.csproj" />
+  <Project Path="TestViewModels/TestViewModels.csproj" />
+</Solution>
